@@ -19,5 +19,14 @@ namespace MyDailyQuote.Controllers
 
 			return Request.CreateListRecordResponse(result);
 		}
+
+		[Route("quote/{userId}"), HttpGet]
+		public HttpResponseMessage GetRandomQuote(int userId)
+		{
+			var repo = new QuoteRepo();
+			var result = repo.GetRandomQuote(userId);
+
+			return Request.CreateResponse(result);
+		}
 	}
 }
