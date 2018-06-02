@@ -46,21 +46,19 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public bool CreateQuote(Quote quote, Show showId)
+		public int CreateQuote(Quote quote)
 		{
 			using (var db = GetConnection())
 			{
 				db.Open();
-				var sql = db.Execute(@"insert into quote
+				return db.Execute(@"insert into quote
 											([QuoteBody]
 											, [Author]
 											,[ShowId]))
 										values
-											([@quote.QuoteBody]
-											,[@quote.Author]
+											([@QuoteBody]
+											,[@Author]
 											,[@showId])", quote);
-
-				return sql == 1;
 			}
 		}
 

@@ -7,7 +7,8 @@ namespace MyDailyQuote.Models
 {
 	public class QuoteDto
 	{
-		public virtual string QuoteBody { get; set; }
-		public virtual string Author { get; set; }
+		public string QuoteBody { get; set; }
+		public string Author { get; set; }
+		public string Title { get; set; }
 	}
 }
