@@ -53,12 +53,12 @@ namespace MyDailyQuote.Services
 				db.Open();
 				return db.Execute(@"insert into quote
 											([QuoteBody]
-											, [Author]
-											,[ShowId]))
+											,[Author]
+											,[ShowId])
 										values
-											([@QuoteBody]
-											,[@Author]
-											,[@showId])", quote);
+											(@QuoteBody
+											,@Author
+											,@ShowId)", quote);
 			}
 		}
 
