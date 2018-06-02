@@ -21,9 +21,21 @@ namespace MyDailyQuote.Services
 			using (var db = GetConnection())
 			{
 				db.Open();
-				var sql = "select * from [dbo].[User]";
+				var sql = "Select * From [dbo].[User]";
 				return db.Query<User>(sql).ToList();
 			}
 		}
+
+		public User GetUser(int userId)
+		{
+			using (var db = GetConnection())
+			{
+				db.Open();
+				return db.QueryFirst(@"Select u.FirstName, u.LastName, u.Email, u.Phone
+									   From [dbo].[User] u
+									   Where u.UserId = @userId", userId);
+			}
+		}
+
 	}
 }
