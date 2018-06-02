@@ -7,7 +7,7 @@ namespace MyDailyQuote.Models
 {
 	public class Show
 	{
-		public int ShowId { get; set; }
-		public string Title { get; set; }
+		public virtual int ShowId { get; set; }
+		public virtual string Title { get; set; }
 	}
 }
