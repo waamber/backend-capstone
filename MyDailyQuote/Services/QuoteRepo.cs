@@ -7,24 +7,23 @@ using System.Linq;
 using System.Web;
 using Dapper;
 
-
 namespace MyDailyQuote.Services
 {
-	public class ShowRepo
+	public class QuoteRepo
 	{
 		public static SqlConnection GetConnection()
 		{
 			return new SqlConnection(ConfigurationManager.ConnectionStrings["MyDailyQuote"].ConnectionString);
 		}
 
-		public List<Show> GetShows()
+		public List<Quote> GetQuotes()
 		{
 			using (var db = GetConnection())
 			{
 				db.Open();
-				var sql = "select * from dbo.Show";
-				return db.Query<Show>(sql).ToList();
+				var sql = "select * from dbo.Quote";
+				return db.Query<Quote>(sql).ToList();
 			}
 		}
-	}	
+	}
 }

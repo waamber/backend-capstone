@@ -8,17 +8,16 @@ using System.Web.Http;
 
 namespace MyDailyQuote.Controllers
 {
-	[RoutePrefix("api/shows")]
-	public class ShowController : ApiController
+	[RoutePrefix("api/users")]
+	public class UserController : ApiController
 	{
 		[Route(""), HttpGet]
-		public HttpResponseMessage ListShows()
+		public HttpResponseMessage GetUsers()
 		{
-			var repo = new ShowRepo();
-			var result = repo.GetShows();
+			var repo = new UserRepo();
+			var result = repo.GetUsers();
 
 			return Request.CreateListRecordResponse(result);
 		}
-
 	}
 }
