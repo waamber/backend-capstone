@@ -29,5 +29,15 @@ namespace MyDailyQuote.Controllers
 
 			return Request.CreateResponse(result);
 		}
+
+		[Route("update/{userId}"), HttpPatch]
+		public HttpResponseMessage UpdateUser(User user, int userId)
+		{
+			user.UserId = userId;
+			var repo = new UserRepo();
+			var result = repo.UpdateUser(user);
+
+			return Request.CreateUpdatedRecordResponse(result);
+		}
 	}
 }

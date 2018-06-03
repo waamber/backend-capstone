@@ -37,5 +37,17 @@ namespace MyDailyQuote.Services
 			}
 		}
 
+		public int UpdateUser(User user)
+		{
+			using (var db = GetConnection())
+			{
+				db.Open();
+				return db.Execute(@"Update [dbo].[User]
+									Set [LastName] = @LastName,
+										[Phone] = @Phone
+									Where UserId = @UserId", user);
+			}
+		}
+
 	}
 }
