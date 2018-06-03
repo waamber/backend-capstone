@@ -26,14 +26,14 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public User GetUser(int userId)
+		public UserDto GetUser(int userId)
 		{
 			using (var db = GetConnection())
 			{
 				db.Open();
-				return db.QueryFirst(@"Select u.FirstName, u.LastName, u.Email, u.Phone
+				return db.QueryFirst<UserDto>(@"Select u.FirstName, u.LastName, u.Email, u.Phone
 									   From [dbo].[User] u
-									   Where u.UserId = @userId", userId);
+									   Where u.UserId = @userId", new { userId });
 			}
 		}
 
