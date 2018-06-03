@@ -1,4 +1,5 @@
-﻿using MyDailyQuote.Services;
+﻿using MyDailyQuote.Models;
+using MyDailyQuote.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,15 @@ namespace MyDailyQuote.Controllers
 			var result = repo.GetUsers();
 
 			return Request.CreateListRecordResponse(result);
+		}
+
+		[Route("{userId}"), HttpGet]
+		public HttpResponseMessage GetUserById(int userId)
+		{
+			var repo = new UserRepo();
+			var result = repo.GetUser(userId);
+
+			return Request.CreateResponse(result);
 		}
 	}
 }

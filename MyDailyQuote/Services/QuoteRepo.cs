@@ -25,5 +25,42 @@ namespace MyDailyQuote.Services
 				return db.Query<Quote>(sql).ToList();
 			}
 		}
+
+		public QuoteDto GetRandomQuote(int userId)
+		{
+			using (var db = GetConnection())
+			{
+				db.Open();
+				var sql = @"select top 1 s.Title, q.quotebody, q.Author
+						   from[dbo].[User] u
+						   join usershow x
+						   on x.UserId = u.UserId
+						   join show s
+						   on x.ShowId = s.ShowId
+						   join[dbo].[quote] q
+						   on q.ShowId = x.ShowId
+						   where u.userId = @userId
+						   order by newid()";
+
+				return db.QueryFirst<QuoteDto>(sql, new { userId });
+			}
+		}
+
+		public int CreateQuote(Quote quote)
+		{
+			using (var db = GetConnection())
+			{
+				db.Open();
+				return db.Execute(@"insert into quote
+											([QuoteBody]
+											,[Author]
+											,[ShowId])
+										values
+											(@QuoteBody
+											,@Author
+											,@ShowId)", quote);
+			}
+		}
+
 	}
 }
