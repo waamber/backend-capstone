@@ -21,9 +21,9 @@ namespace MyDailyQuote.Services
 			{
 				db.Open();
 				return db.Query<UserShow>(@"Select *
-						    From [dbo].[UserShow] u
-							Where u.UserId = @userId", new { userId}).ToList();
-				
+											From [dbo].[UserShow] u
+											Where u.UserId = @userId", new { userId }).ToList();
+
 			}
 		}
 
@@ -34,7 +34,7 @@ namespace MyDailyQuote.Services
 				db.Open();
 				return db.Execute(@"Delete from UserShow
 									Where UserId = @userId
-									And ShowId = @showId");
+									And ShowId = @showId", new { userId, showId });
 			}
 		}
 	}

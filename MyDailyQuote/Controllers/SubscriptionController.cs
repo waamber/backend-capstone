@@ -8,7 +8,7 @@ using System.Web.Http;
 
 namespace MyDailyQuote.Controllers
 {
-	[RoutePrefix("api/subscription")]
+	[RoutePrefix("api/subscriptions")]
 	public class SubscriptionController : ApiController
 	{
 
@@ -21,15 +21,23 @@ namespace MyDailyQuote.Controllers
 			return Request.CreateListRecordResponse(result);
 		}
 
-		//[Route("unsubscribe"), HttpDelete]
-		//public HttpResponseMessage UnsubscribeToShow(int userId)
-		//{
-		//	var 
-		//	var userShowRepo = new UserShowRepo();
+		[Route("unsubscribe/{userId}/{showId}"), HttpDelete]
+		public HttpResponseMessage UnsubscribeToShow([FromUri]int userId, int showId)
+		{
+			var repo = new UserShowRepo();
+			var subscriptions = repo.GetSubscriptionsByUser(userId);
+			
+			foreach(var subscription in subscriptions)
+			{
+				if(subscription.ShowId == showId)
+				{
+					subscription.ShowId = showId;
+				}
+			}
 
-		//	var result = repo.UnsubscribeUserToShow(userId, showId);
+			var result = repo.UnsubscribeUserToShow(userId, showId);
 
-		//	return Request.CreateUpdatedRecordResponse(result);
-		//}
+			return Request.CreateUpdatedRecordResponse(result);
+		}
 	}
 }
