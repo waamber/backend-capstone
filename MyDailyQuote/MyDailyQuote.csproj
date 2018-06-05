@@ -237,6 +237,7 @@
     <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\SmsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,9 +255,12 @@
     <Compile Include="Services\HangfireBootstrapper.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
     <Compile Include="Services\QuoteRepo.cs" />
+    <Compile Include="Services\QuoteScheduler.cs" />
     <Compile Include="Services\ShowRepo.cs" />
     <Compile Include="Services\UserRepo.cs" />
     <Compile Include="Services\Startup.cs" />
+    <Compile Include="Models\UserShow.cs" />
+    <Compile Include="Services\UserShowRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
