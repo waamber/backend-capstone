@@ -248,12 +248,14 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ApplicationPreload.cs" />
     <Compile Include="Services\DbResponseEnum.cs" />
+    <Compile Include="Services\HangfireBootstrapper.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
     <Compile Include="Services\QuoteRepo.cs" />
     <Compile Include="Services\ShowRepo.cs" />
     <Compile Include="Services\UserRepo.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="Services\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
