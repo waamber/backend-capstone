@@ -26,7 +26,7 @@ namespace MyDailyQuote.Controllers
 		{
 			var repo = new UserRepo();
 			var result = repo.GetUser(userId);
-
+		
 			return Request.CreateResponse(result);
 		}
 

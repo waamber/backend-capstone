@@ -37,6 +37,17 @@ namespace MyDailyQuote.Services
 			}
 		}
 
+		public User GetUserById(int userId)
+		{
+			using (var db = GetConnection())
+			{
+				db.Open();
+				return db.QueryFirst<User>(@"Select u.FirstName, u.LastName, u.Email, u.Phone
+									   From [dbo].[User] u
+									   Where u.UserId = @userId");
+			}
+		}
+
 		public int UpdateUser(User user)
 		{
 			using (var db = GetConnection())
