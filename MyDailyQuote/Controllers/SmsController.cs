@@ -24,9 +24,10 @@ namespace MyDailyQuote.Controllers
 			TwilioClient.Init(accountSid, authToken);
 
 			var repo = new QuoteRepo();
-			var quote = repo.GetRandomQuote(user.UserId).QuoteBody.ToString();
-			var author = repo.GetRandomQuote(user.UserId).Author.ToString();
-			var show = repo.GetRandomQuote(user.UserId).Title.ToString();
+			var quote = repo.GetRandomQuote(user.UserId);
+			var quoteBody = quote.QuoteBody;
+			var author = quote.Author;
+			var show = quote.Title;
 
 			var appNumber = new PhoneNumber("+16154923369");
 			var to = new PhoneNumber($"+1{user.Phone}");
@@ -34,7 +35,7 @@ namespace MyDailyQuote.Controllers
 			var message = MessageResource.Create(
 				to,
 				from: appNumber,
-				body: $"'{quote}' -{author} ({show})",
+				body: $"'{quoteBody}' -{author} ({show})",
 				pathAccountSid: accountSid);
 		}
 	}
