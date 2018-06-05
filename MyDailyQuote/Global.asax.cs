@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyDailyQuote.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,13 @@ namespace MyDailyQuote
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			HangfireBootstrapper.Instance.Start();
+		}
+
+		protected void Application_End()
+		{
+			HangfireBootstrapper.Instance.Stop();
 		}
 	}
 }

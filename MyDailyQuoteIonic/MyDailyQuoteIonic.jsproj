@@ -85,6 +85,9 @@
     <Content Include="**\**" Exclude="**\platforms\**;**\bin\**;**\bld\**;**\node_modules\**;**\simulation\**;**\plugins\**;.gitignore;MyDailyQuoteIonic.*" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MyDailyQuote\node_modules\dateformat\.vs\config\applicationhost.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="config.xml">
       <SubType>Designer</SubType>
     </Content>
