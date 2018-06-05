@@ -241,6 +241,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Key\Key.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\QuoteDto.cs" />
