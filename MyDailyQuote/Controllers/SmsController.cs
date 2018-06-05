@@ -20,7 +20,8 @@ namespace MyDailyQuote.Controllers
 		public void SendQuote(User user)
 		{
 			var accountSid = "ACb683348bef9a93aa101862bcccbd3a68";
-			var authToken = "";
+			var token = new Key();
+			var authToken = token.APIKey();
 			TwilioClient.Init(accountSid, authToken);
 
 			var repo = new QuoteRepo();
