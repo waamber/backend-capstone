@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using MyDailyQuote.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -15,13 +16,15 @@ namespace MyDailyQuote.Services
 			return new SqlConnection(ConfigurationManager.ConnectionStrings["MyDailyQuote"].ConnectionString);
 		}
 
-		public List<UserShow> GetSubscriptionsByUser(int userId)
+		public List<UserShowDto> GetSubscriptionsByUser(int userId)
 		{
 			using (var db = GetConnection())
 			{
 				db.Open();
-				return db.Query<UserShow>(@"Select *
+				return db.Query<UserShowDto>(@"Select *
 											From [dbo].[UserShow] u
+											Join [dbo].[Show] s
+											On s.ShowId = u.ShowId
 											Where u.UserId = @userId", new { userId }).ToList();
 
 			}

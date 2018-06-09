@@ -21,7 +21,7 @@ namespace MyDailyQuote.Services
 			using (var db = GetConnection())
 			{
 				db.Open();
-				var sql = "select * from dbo.Quote";
+				var sql = "Select * From [dbo].[Quote]";
 				return db.Query<Quote>(sql).ToList();
 			}
 		}

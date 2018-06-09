@@ -1,0 +1,21 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <div class="showsList">
+      <div class="item item-divider">
+        My Subscriptions
+      </div>
+      <div class="mySubscriptionsList item" ng-repeat="subscription in subscriptions">
+        {{subscription.Title}}
+      </div>
+      <div class="item item-divider">
+      Browse
+    </div>
+      <div class="showsList item item-button-right" ng-repeat="show in shows">
+        {{show.Title}}
+        <button class="button button-balanced">
+          <i class="icon ion-ios-plus"></i>
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

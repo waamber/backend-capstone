@@ -92,4 +92,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MyDailyQuote\www\img\" />
+  </ItemGroup>
 </Project>
