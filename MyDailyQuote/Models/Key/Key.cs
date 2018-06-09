@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MyDailyQuote
+namespace MyDailyQuote.Models.Key
 {
 	public class Key
 	{
-		public string APIKey()
-		{
-			return "";
-		}
 	}
 }
