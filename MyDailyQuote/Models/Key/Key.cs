@@ -9,7 +9,7 @@ namespace MyDailyQuote
 	{
 		public string APIKey()
 		{
-			return "a3df6a9a497fce3c109be06d6d8e9e54";
+			return "";
 		}
 	}
 }
