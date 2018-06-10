@@ -1,16 +1,31 @@
-<ion-view view-title="Submit A Quote">
-  <ion-content>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+<ion-view view-title="Submit A Quote" ng-controller="AddCtrl">
+  <ion-content class="padding-horizontal padding-top">
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+    <form id="quoteForm" name="quoteForm" ng-submit="submitNewQuote()" novalidate >
+      <div class="list">
+        <label class="item item-input item-select">
+          Show
+          <select required ng-model="show.Title" ng-options="show as show.Title for show in shows track by show.ShowId">
+            <option value="" ng-selected="true">Select</option>
+            <option ng-repeat="show in shows">{{show.Title}}</option>
+          </select>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Quote</span>
+          <input required type="text" placeholder="Quote" ng-model="quote.QuoteBody">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Author</span>
+          <input required type="text" placeholder="Author" ng-model="quote.Author">
+        </label>
+      </div>
+    </form>
+    <button ng-click="addNewQuote()" class="button button-block button-positive" ng-disabled="quoteForm.$invalid">
+      Submit Quote
+    </button>
+    <button ng-click="clearForm()" class="button button-block button-assertive">
+      Clear
+    </button>
+
   </ion-content>
 </ion-view>
