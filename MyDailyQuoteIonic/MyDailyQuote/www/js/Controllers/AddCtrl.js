@@ -1,4 +1,4 @@
-angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$location", "AddService", function ($scope, $http, $location, AddService) {
+angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$ionicPopup", "$timeout", "$location", "AddService", function ($scope, $http, $ionicPopup, $timeout, $location, AddService) {
 
   $scope.quote = {};
 
@@ -10,9 +10,20 @@ angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$location",
 
   $scope.addQuote = function () {
     AddService.addNewQuote($scope.quote).then(function () {
-      $location.path('/tab/home');
+      $scope.submissionConfirm();
     }).catch(function (err) {
       console.log("Error in AddCtrl.", err);
+    });
+  };
+
+  $scope.submissionConfirm = function () {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Submission Confirmation',
+      template: 'Congrats! Your quote has been submitted!'
+    });
+
+    alertPopup.then(function (res) {
+      $location.path('/tab/home');
     });
   };
 
