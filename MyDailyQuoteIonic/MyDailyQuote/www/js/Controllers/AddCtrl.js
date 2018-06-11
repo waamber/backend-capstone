@@ -10,15 +10,10 @@ angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$location",
 
   $scope.addQuote = function () {
     AddService.addNewQuote($scope.quote).then(function () {
-      console.log($scope.quote);
-      navToHome();
+      $location.path('/tab/home');
     }).catch(function (err) {
       console.log("Error in AddCtrl.", err);
     });
-  };
-
-  var navToHome = function () {
-    $location.path('/home');
   };
 
 }

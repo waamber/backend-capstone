@@ -17,7 +17,7 @@ angular.module('starter').service('AddService', function ($http, $q, $rootScope)
 
   this.addNewQuote = function (quote) {
     return $q((resolve, reject) => {
-      $http.post(`http://localhost:50987/api/quotes/add`).then(function (results) {
+      $http.post(`http://localhost:50987/api/quotes/add`, JSON.stringify(quote)).then(function (results) {
         resolve(results);
       }).catch(function (err) {
         reject("Error in AddService.js", err);
