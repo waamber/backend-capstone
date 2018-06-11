@@ -5,9 +5,8 @@
       <div class="list">
         <label class="item item-input item-select">
           Show
-          <select required ng-model="show.Title" ng-options="show as show.Title for show in shows track by show.ShowId">
+          <select required ng-model="quote.ShowId" ng-options="show.ShowId as show.Title for show in shows">
             <option value="" ng-selected="true">Select</option>
-            <option ng-repeat="show in shows">{{show.Title}}</option>
           </select>
         </label>
         <label class="item item-input item-floating-label">
@@ -20,7 +19,7 @@
         </label>
       </div>
     </form>
-    <button ng-click="addNewQuote()" class="button button-block button-positive" ng-disabled="quoteForm.$invalid">
+    <button ng-click="addQuote()" class="button button-block button-positive" ng-disabled="quoteForm.$invalid">
       Submit Quote
     </button>
     <button ng-click="clearForm()" class="button button-block button-assertive">

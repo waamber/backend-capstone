@@ -1,13 +1,14 @@
 angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$location", "AddService", function ($scope, $http, $location, AddService) {
 
+  $scope.quote = {};
+
   AddService.getShows().then(function (results) {
     $scope.shows = results;
   }).catch(function (err) {
     console.log("Error in getShows().", err);
   });
 
-  $scope.addNewQuote = function () {
-    $scope.quote.ShowId = $scope.shows.ShowId;
+  $scope.addQuote = function () {
     AddService.addNewQuote($scope.quote).then(function () {
       console.log($scope.quote);
       navToHome();

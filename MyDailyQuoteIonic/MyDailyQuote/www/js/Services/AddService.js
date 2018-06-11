@@ -15,7 +15,7 @@ angular.module('starter').service('AddService', function ($http, $q, $rootScope)
     });
   };
 
-  var addNewQuote = function (quote) {
+  this.addNewQuote = function (quote) {
     return $q((resolve, reject) => {
       $http.post(`http://localhost:50987/api/quotes/add`).then(function (results) {
         resolve(results);
