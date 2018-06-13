@@ -21,7 +21,7 @@ using System.Web.Http;
 namespace MyDailyQuote.Controllers
 {
 	[Authorize]
-	[RoutePrefix("api/Login")]
+	[RoutePrefix("Login")]
 	public class LoginController : ApiController
 	{
 		private const string LocalLoginProvider = "Local";
@@ -52,7 +52,7 @@ namespace MyDailyQuote.Controllers
 
 		public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
-		// GET api/Account/UserInfo
+		// GET api/Login/UserInfo
 		[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
 		[Route("UserInfo")]
 		public UserInfoViewModel GetUserInfo()

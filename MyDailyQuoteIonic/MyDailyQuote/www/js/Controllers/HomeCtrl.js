@@ -1,4 +1,4 @@
-angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$location", "HomeService", function ($scope, $http, $location, HomeService) {
+angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$location", "$routeParams", "HomeService", function ($scope, $http, $location, $routeParams, HomeService) {
 
   var userId = 2;
 
