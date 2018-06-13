@@ -32,14 +32,14 @@ namespace MyDailyQuote.Services
 			{
 				db.Open();
 				var sql = @"select top 1 s.Title, q.quotebody, q.Author
-						   from[dbo].[User] u
+						   from[dbo].[AspNetUser] u
 						   join usershow x
-						   on x.UserId = u.UserId
+						   on x.UserId = u.Id
 						   join show s
 						   on x.ShowId = s.ShowId
 						   join[dbo].[quote] q
 						   on q.ShowId = x.ShowId
-						   where u.userId = @userId
+						   where u.Id = @userId
 						   order by newid()";
 
 				return db.QueryFirst<QuoteDto>(sql, new { userId });

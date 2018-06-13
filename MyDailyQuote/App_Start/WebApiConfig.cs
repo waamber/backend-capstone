@@ -11,7 +11,7 @@ namespace MyDailyQuote
 		public static void Register(HttpConfiguration config)
 		{
 			// Web API configuration and services
-			config.EnableCors(new EnableCorsAttribute("*","*","*"));
+			config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
 			// Web API routes
 			config.MapHttpAttributeRoutes();
@@ -22,5 +22,6 @@ namespace MyDailyQuote
 				defaults: new { id = RouteParameter.Optional }
 			);
 		}
+
 	}
 }

@@ -1,4 +1,4 @@
-angular.module('starter').controller('LoginCtrl', ["$http", "$scope", function ($http, $scope) {
+angular.module('starter').controller('LoginCtrl', ["$http", "$location", "$scope", function ($http, $location, $scope) {
 
   $scope.login = {};
 
@@ -20,11 +20,11 @@ angular.module('starter').controller('LoginCtrl', ["$http", "$scope", function (
       .then(function (result) {
         sessionStorage.setItem('token', result.data.access_token);
         $http.defaults.headers.common['Authorization'] = `bearer ${result.data.access_token}`;
-        $location.path("/#/tab/home");
+        $location.path("/tab/home");
 
         $scope.inProgress = false;
-      }, function (result) {
-        $scope.error = result.data.error_description;
+      }, function (error) {
+        //$scope.error = error.data.error_description;
         $scope.inProgress = false;
       });
   };
