@@ -7,16 +7,16 @@
     <div class="list">
       <label class="item item-input item-floating-label">
         <span class="input-label">Email</span>
-        <input type="text" placeholder="Email" />
+        <input type="text" placeholder="Email" ng-model="username"/>
       </label>
       <label class="item item-input item-floating-label">
         <span class="input-label">Password</span>
-        <input type="text" placeholder="Password" />
+        <input type="text" placeholder="Password" ng-model="password"/>
       </label>
     </div>
 
     <div padding>
-      <button class="button button-positive">Login</button>
+      <button class="button button-positive"ng-click="login()">Login</button>
       <button class="button button-engerized">Sign Up</button>
     </div>
 

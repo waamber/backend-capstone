@@ -1,6 +1,6 @@
 angular.module('starter', ['ionic'])
 
-  .run(function ($ionicPlatform) {
+  .run(["$rootScope", "$http", "$location", "$ionicPlatform", function ($rootScope, $http, $location, $ionicPlatform) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -10,8 +10,29 @@ angular.module('starter', ['ionic'])
         StatusBar.styleDefault();
       }
     });
-  })
 
+    $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token") };
+
+    $rootScope.$on("$routeChangeStart", function (event, currRoute) {
+      var anonymousPage = false;
+      var originalPath = currRoute.originalPath;
+
+      if (originalPath) {
+        anonymousPage = originalPath.indexOf("/login") !== -1;
+      }
+
+      if (!anonymousPage && !$rootScope.isLoggedIn()) {
+        event.preventDefault();
+        $location.path("/tab/home");
+      }
+    });
+
+    var token = sessionStorage.getItem("token");
+
+    if (token)
+      $http.defaults.headers.common["Authorization"] = `bearer ${token}`;
+  }
+  ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('login', {
