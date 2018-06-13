@@ -21,7 +21,7 @@ using System.Web.Http;
 namespace MyDailyQuote.Controllers
 {
 	[Authorize]
-	[RoutePrefix("api/Login")]
+	[RoutePrefix("/Login")]
 	public class LoginController : ApiController
 	{
 		private const string LocalLoginProvider = "Local";
