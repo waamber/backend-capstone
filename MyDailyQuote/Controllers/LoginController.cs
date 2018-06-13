@@ -1,14 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -18,21 +8,30 @@ using MyDailyQuote.Models;
 using MyDailyQuote.Models.MyFirstAuthenticationApp.Models;
 using MyDailyQuote.Providers;
 using MyDailyQuote.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
 
 namespace MyDailyQuote.Controllers
 {
 	[Authorize]
 	[RoutePrefix("api/Login")]
-	public class AccountController : ApiController
+	public class LoginController : ApiController
 	{
 		private const string LocalLoginProvider = "Local";
 		private ApplicationUserManager _userManager;
 
-		public AccountController()
+		public LoginController()
 		{
 		}
 
-		public AccountController(ApplicationUserManager userManager,
+		public LoginController(ApplicationUserManager userManager,
 			ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
 		{
 			UserManager = userManager;
@@ -111,7 +110,8 @@ namespace MyDailyQuote.Controllers
 			{
 				LocalLoginProvider = LocalLoginProvider,
 				Email = user.UserName,
-				Logins = logins
+				Logins = logins,
+				ExternalLoginProviders = GetExternalLogins(returnUrl, generateState)
 			};
 		}
 
@@ -219,6 +219,47 @@ namespace MyDailyQuote.Controllers
 			}
 
 			return Ok();
+		}
+		
+		// GET api/Account/ExternalLogins?returnUrl=%2F&generateState=true
+		[AllowAnonymous]
+		[Route("ExternalLogins")]
+		public IEnumerable<ExternalLoginViewModel> GetExternalLogins(string returnUrl, bool generateState = false)
+		{
+			IEnumerable<AuthenticationDescription> descriptions = Authentication.GetExternalAuthenticationTypes();
+			List<ExternalLoginViewModel> logins = new List<ExternalLoginViewModel>();
+
+			string state;
+
+			if (generateState)
+			{
+				const int strengthInBits = 256;
+				state = RandomOAuthStateGenerator.Generate(strengthInBits);
+			}
+			else
+			{
+				state = null;
+			}
+
+			foreach (AuthenticationDescription description in descriptions)
+			{
+				ExternalLoginViewModel login = new ExternalLoginViewModel
+				{
+					Name = description.Caption,
+					Url = Url.Route("ExternalLogin", new
+					{
+						provider = description.AuthenticationType,
+						response_type = "token",
+						client_id = Startup.PublicClientId,
+						redirect_uri = new Uri(Request.RequestUri, returnUrl).AbsoluteUri,
+						state = state
+					}),
+					State = state
+				};
+				logins.Add(login);
+			}
+
+			return logins;
 		}
 
 		// POST api/Account/Register
@@ -395,35 +436,3 @@ namespace MyDailyQuote.Controllers
 		#endregion
 	}
 }
-
-	//[RoutePrefix("api/users")]
-	//public class UserController : ApiController
-	//{
-	//	[Route(""), HttpGet]
-	//	public HttpResponseMessage GetUsers()
-	//	{
-	//		var repo = new UserRepo();
-	//		var result = repo.GetUsers();
-
-	//		return Request.CreateListRecordResponse(result);
-	//	}
-
-	//	[Route("{userId}"), HttpGet]
-	//	public HttpResponseMessage GetUserById(int userId)
-	//	{
-	//		var repo = new UserRepo();
-	//		var result = repo.GetUser(userId);
-
-	//		return Request.CreateResponse(result);
-	//	}
-
-	//	[Route("update/{userId}"), HttpPatch]
-	//	public HttpResponseMessage UpdateUser(User user, int userId)
-	//	{
-	//		user.UserId = userId;
-	//		var repo = new UserRepo();
-	//		var result = repo.UpdateUser(user);
-
-	//		return Request.CreateUpdatedRecordResponse(result);
-	//	}
-	//}

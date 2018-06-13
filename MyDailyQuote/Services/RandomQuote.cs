@@ -20,7 +20,7 @@ namespace MyDailyQuote.Services
 			TwilioClient.Init(accountSid, authToken);
 
 			var repo = new QuoteRepo();
-			var quote = repo.GetRandomQuote(user.UserId);
+			var quote = repo.GetRandomQuote(user.Id);
 			var quoteBody = quote.QuoteBody;
 			var author = quote.Author;
 			var show = quote.Title;

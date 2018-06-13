@@ -26,7 +26,7 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public QuoteDto GetRandomQuote(int userId)
+		public QuoteDto GetRandomQuote(string userId)
 		{
 			using (var db = GetConnection())
 			{
