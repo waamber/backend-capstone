@@ -4,7 +4,6 @@ angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$location"
 
   HomeService.getShows().then(function (results) {
     $scope.shows = results;
-    console.log($scope.shows);
   }).catch(function (err) {
     console.log("Error in getShows().", err);
   });
