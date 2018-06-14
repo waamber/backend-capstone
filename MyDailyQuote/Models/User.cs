@@ -12,6 +12,7 @@ namespace MyDailyQuote.Models
 		public virtual string Phone { get; set; }
 		
 		
+		
 
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(ApplicationUserManager manager, string authenticationType)
 		{

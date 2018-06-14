@@ -32,7 +32,7 @@ namespace MyDailyQuote.Services
 			{
 				db.Open();
 				var sql = @"select top 1 s.Title, q.quotebody, q.Author
-						   from[dbo].[AspNetUser] u
+						   from[dbo].[AspNetUsers] u
 						   join usershow x
 						   on x.UserId = u.Id
 						   join show s

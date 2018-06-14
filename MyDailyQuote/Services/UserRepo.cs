@@ -26,7 +26,7 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public UserDto GetUser(int userId)
+		public UserDto GetUser(string userId)
 		{
 			using (var db = GetConnection())
 			{
@@ -37,13 +37,13 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public User GetUserById(int userId)
+		public User GetUserById(string userId)
 		{
 			using (var db = GetConnection())
 			{
 				db.Open();
 				return db.QueryFirst<User>(@"Select u.FirstName, u.LastName, u.Email, u.Phone
-									   From [dbo].[AspNetUser] u
+									   From [dbo].[AspNetUsers] u
 									   Where u.Id = @userId");
 			}
 		}
@@ -53,7 +53,7 @@ namespace MyDailyQuote.Services
 			using (var db = GetConnection())
 			{
 				db.Open();
-				return db.Execute(@"Update [dbo].[AspNetUser]
+				return db.Execute(@"Update [dbo].[AspNetUsers]
 									Set [LastName] = @LastName,
 										[Phone] = @Phone
 									Where Id = @UserId", user);

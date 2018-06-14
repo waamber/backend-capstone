@@ -13,7 +13,7 @@ namespace MyDailyQuote.Controllers
 	{
 
 		[Route("{userId}"), HttpGet]
-		public HttpResponseMessage GetSubscriptionsByUser(int userId)
+		public HttpResponseMessage GetSubscriptionsByUser(string userId)
 		{
 			var repo = new UserShowRepo();
 			var result = repo.GetSubscriptionsByUser(userId);
@@ -22,7 +22,7 @@ namespace MyDailyQuote.Controllers
 		}
 
 		[Route("unsubscribe/{userId}/{showId}"), HttpDelete]
-		public HttpResponseMessage UnsubscribeToShow([FromUri]int userId, int showId)
+		public HttpResponseMessage UnsubscribeToShow([FromUri]string userId, int showId)
 		{
 			var repo = new UserShowRepo();
 			var subscriptions = repo.GetSubscriptionsByUser(userId);

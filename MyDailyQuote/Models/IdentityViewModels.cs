@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,6 +35,9 @@ namespace MyDailyQuote.Models
 		public bool HasRegistered { get; set; }
 
 		public string LoginProvider { get; set; }
+
+		public string UserId = HttpContext.Current.User.Identity.GetUserId();
+
 	}
 
 	public class UserLoginInfoViewModel
