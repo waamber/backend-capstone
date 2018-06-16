@@ -16,7 +16,7 @@ namespace MyDailyQuote.Services
 			return new SqlConnection(ConfigurationManager.ConnectionStrings["MyDailyQuote"].ConnectionString);
 		}
 
-		public List<UserShowDto> GetSubscriptionsByUser(string userId)
+		public List<UserShowDto> GetSubscriptionsByUser(int userId)
 		{
 			using (var db = GetConnection())
 			{
@@ -30,7 +30,7 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public int UnsubscribeUserToShow(string userId, int showId)
+		public int UnsubscribeUserToShow(int userId, int showId)
 		{
 			using (var db = GetConnection())
 			{

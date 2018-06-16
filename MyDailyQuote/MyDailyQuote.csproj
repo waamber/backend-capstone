@@ -80,6 +80,9 @@
     <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
@@ -258,7 +261,6 @@
     <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\SmsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -268,10 +270,7 @@
     <Compile Include="Migrations\201806120005061_addedEntity.Designer.cs">
       <DependentUpon>201806120005061_addedEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppDbContext.cs" />
-    <Compile Include="Models\IdentityBindingModels.cs" />
-    <Compile Include="Models\IdentityViewModels.cs" />
     <Compile Include="Models\Key\Keys.cs" />
     <Compile Include="Models\Quote.cs" />
     <Compile Include="Models\QuoteDto.cs" />
@@ -280,12 +279,11 @@
     <Compile Include="Models\UserDto.cs" />
     <Compile Include="Models\UserShowDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Services\ApplicationPreload.cs" />
-    <Compile Include="Services\ApplicationUserManager.cs" />
     <Compile Include="Services\DbResponseEnum.cs" />
     <Compile Include="Services\HangfireBootstrapper.cs" />
     <Compile Include="Services\HttpResponseService.cs" />
+    <Compile Include="Services\LoginRepo.cs" />
     <Compile Include="Services\QuoteRepo.cs" />
     <Compile Include="Services\RandomQuote.cs" />
     <Compile Include="Services\ShowRepo.cs" />
@@ -327,7 +325,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
