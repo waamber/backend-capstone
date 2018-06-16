@@ -14,7 +14,7 @@ namespace MyDailyQuote.Controllers
 		{
 			var repo = new RandomQuote();
 
-			RecurringJob.AddOrUpdate("SendDailyText", () => repo.SendOutDailyQuote(user), "*/5 * * * *");
+			RecurringJob.AddOrUpdate("SendDailyText", () => repo.SendOutDailyQuote(user), "*/2 * * * *");
 		}
 	}
 }

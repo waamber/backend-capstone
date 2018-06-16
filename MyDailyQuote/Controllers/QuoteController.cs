@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace MyDailyQuote.Controllers
 {
-	[Authorize]
+	
 	[RoutePrefix("api/quotes")]
 	public class QuoteController : ApiController
 	{
@@ -19,7 +19,7 @@ namespace MyDailyQuote.Controllers
 		}
 
 		[Route("{userId}"), HttpGet]
-		public HttpResponseMessage GetRandomQuote(string userId)
+		public HttpResponseMessage GetRandomQuote(int userId)
 		{
 			var repo = new QuoteRepo();
 			var result = repo.GetRandomQuote(userId);

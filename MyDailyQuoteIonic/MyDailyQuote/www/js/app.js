@@ -1,5 +1,4 @@
 angular.module('starter', ['ionic'])
-
   .run(["$rootScope", "$http", "$location", "$ionicPlatform", function ($rootScope, $http, $location, $ionicPlatform) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -10,27 +9,6 @@ angular.module('starter', ['ionic'])
         StatusBar.styleDefault();
       }
     });
-
-    $rootScope.isLoggedIn = function () { return !!sessionStorage.getItem("token") };
-
-    $rootScope.$on("$routeChangeStart", function (event, currRoute) {
-      var anonymousPage = false;
-      var originalPath = currRoute.originalPath;
-
-      if (originalPath) {
-        anonymousPage = originalPath.indexOf("/login") !== -1;
-      }
-
-      if (!anonymousPage && !$rootScope.isLoggedIn()) {
-        event.preventDefault();
-        $location.path("/tab/home");
-      }
-    });
-
-    var token = sessionStorage.getItem("token");
-
-    if (token)
-      $http.defaults.headers.common["Authorization"] = `bearer ${token}`;
   }
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -46,7 +24,7 @@ angular.module('starter', ['ionic'])
         templateUrl: 'templates/tabs.html'
       })
       .state('tab.home', {
-        url: '/home',
+        url: '/home/:id',
         views: {
           'tab-home': {
             templateUrl: 'templates/tab-home.html',
@@ -55,7 +33,7 @@ angular.module('starter', ['ionic'])
         }
       })
       .state('tab.add', {
-        url: '/add',
+        url: '/add/:id',
         views: {
           'tab-add': {
             templateUrl: 'templates/tab-add.html',
@@ -64,7 +42,7 @@ angular.module('starter', ['ionic'])
         }
       })
       .state('tab.account', {
-        url: '/account',
+        url: '/account/:id',
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-account.html',

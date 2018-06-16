@@ -1,4 +1,5 @@
-﻿using MyDailyQuote.Services;
+﻿using Microsoft.AspNet.Identity;
+using MyDailyQuote.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MyDailyQuote.Controllers
 	public class SubscriptionController : ApiController
 	{
 
-		[Route("{userId}"), HttpGet]
+		[Route(""), HttpGet]
 		public HttpResponseMessage GetSubscriptionsByUser(int userId)
 		{
 			var repo = new UserShowRepo();

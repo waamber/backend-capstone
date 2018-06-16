@@ -15,12 +15,13 @@ namespace MyDailyQuote.Services
 	{
 		public void SendOutDailyQuote(User user)
 		{
+			
 			var accountSid = "ACb683348bef9a93aa101862bcccbd3a68";
-			var authToken = "";
+			var authToken = "e675ff86ce775423fec786a144af25d0";
 			TwilioClient.Init(accountSid, authToken);
 
 			var repo = new QuoteRepo();
-			var quote = repo.GetRandomQuote(user.Id);
+			var quote = repo.GetRandomQuote(user.UserId);
 			var quoteBody = quote.QuoteBody;
 			var author = quote.Author;
 			var show = quote.Title;

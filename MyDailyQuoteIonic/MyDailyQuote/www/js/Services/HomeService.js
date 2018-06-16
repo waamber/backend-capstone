@@ -1,4 +1,4 @@
-angular.module('starter').service('HomeService', function ($http, $q, $rootScope) {
+angular.module('starter').service('HomeService',  function ($http, $q, $rootScope, AuthService) {
 
   this.getShows = function () {
     var showList = [];
@@ -25,7 +25,5 @@ angular.module('starter').service('HomeService', function ($http, $q, $rootScope
       });
     });
   };
-
- 
 
 });

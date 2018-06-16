@@ -7,7 +7,7 @@ using System.Web;
 
 namespace MyDailyQuote.Models
 {
-	public class AppDbContext : IdentityDbContext<User>
+	public class AppDbContext : DbContext
 	{
 		public AppDbContext() : base("MyDailyQuote") { }
 		

@@ -16,7 +16,6 @@ namespace MyDailyQuote
 			GlobalConfiguration.Configuration.UseSqlServerStorage("MyDailyQuote");
 			app.UseHangfireDashboard();
 			app.UseHangfireServer();
-			ConfigureAuth(app);
 		}
 	}
 }

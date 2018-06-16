@@ -26,20 +26,20 @@ namespace MyDailyQuote.Services
 			}
 		}
 
-		public QuoteDto GetRandomQuote(string userId)
+		public QuoteDto GetRandomQuote(int userId)
 		{
 			using (var db = GetConnection())
 			{
 				db.Open();
 				var sql = @"select top 1 s.Title, q.quotebody, q.Author
-						   from[dbo].[AspNetUser] u
+						   from[dbo].[User] u
 						   join usershow x
-						   on x.UserId = u.Id
+						   on x.UserId = u.UserId
 						   join show s
 						   on x.ShowId = s.ShowId
 						   join[dbo].[quote] q
 						   on q.ShowId = x.ShowId
-						   where u.Id = @userId
+						   where u.UserId = @userId
 						   order by newid()";
 
 				return db.QueryFirst<QuoteDto>(sql, new { userId });
