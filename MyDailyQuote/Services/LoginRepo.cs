@@ -27,5 +27,26 @@ namespace MyDailyQuote.Services
 											where Password = @password", new { password });
 			}
 		}
+
+		public int CreateNewUser(UserDto user)
+		{
+			using (var db= GetConnection())
+			{
+				db.Open();
+
+				return db.Execute(@"Insert into [dbo].[user]
+									([FirstName],
+									 [LastName],
+									 [Phone],
+									 [Username],
+									 [Password])
+									Values
+									 (@FirstName,
+									  @LastName,
+									  @Phone, 
+									  @Username.
+									  @Password)");
+			}
+		}
 	}
 }

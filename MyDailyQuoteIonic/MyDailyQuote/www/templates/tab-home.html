@@ -4,8 +4,11 @@
       <div class="item item-divider">
         My Subscriptions
       </div>
-      <div class="mySubscriptionsList item" ng-repeat="subscription in subscriptions">
+      <div class="mySubscriptionsList item item-button-right"  ng-repeat="subscription in subscriptions">
         {{subscription.Title}}
+        <button class="button button-assertive" ng-click="unsubscribe(subscription.ShowId)">
+          <i class="icon ion-ios-close"></i>
+        </button>
       </div>
       <div class="item item-divider">
       Browse

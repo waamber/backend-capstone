@@ -1,4 +1,4 @@
-angular.module('starter').service('HomeService',  function ($http, $q, $rootScope, AuthService) {
+angular.module('starter').service('HomeService',  function ($http, $q, $rootScope) {
 
   this.getShows = function () {
     var showList = [];
@@ -19,7 +19,16 @@ angular.module('starter').service('HomeService',  function ($http, $q, $rootScop
     return $q((resolve, reject) => {
       $http.get(`http://localhost:50987/api/subscriptions/${userId}`).then(function (results) {
         resolve(results.data);
-        console.log(results.data);
+      }).catch(function (err) {
+        reject("Error in HomeService.", err);
+      });
+    });
+  };
+
+  this.unsubscribeToShow = function (userId, showId) {
+    return $q((resolve, reject) => {
+      $http.delete(`http://localhost:50987/api/subscriptions/unsubscribe/${userId}/${showId}`).then(function (results) {
+        resolve(results);
       }).catch(function (err) {
         reject("Error in HomeService.", err);
       });
