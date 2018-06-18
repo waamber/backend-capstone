@@ -13,7 +13,7 @@ namespace MyDailyQuote.Controllers
 	public class SubscriptionController : ApiController
 	{
 
-		[Route(""), HttpGet]
+		[Route("{userId}"), HttpGet]
 		public HttpResponseMessage GetSubscriptionsByUser(int userId)
 		{
 			var repo = new UserShowRepo();

@@ -33,7 +33,7 @@ angular.module('starter', ['ionic'])
         }
       })
       .state('tab.add', {
-        url: '/add/:id',
+        url: '/add',
         views: {
           'tab-add': {
             templateUrl: 'templates/tab-add.html',

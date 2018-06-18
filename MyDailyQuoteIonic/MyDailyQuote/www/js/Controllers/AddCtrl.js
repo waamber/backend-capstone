@@ -1,6 +1,8 @@
-angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$ionicPopup", "$timeout", "$location", "AddService", function ($scope, $http, $ionicPopup, $timeout, $location, AddService) {
+angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$ionicPopup", "$timeout", "$location", "AddService", "$state", "$rootScope", function ($scope, $http, $ionicPopup, $timeout, $location, AddService, $state, $rootScope) {
 
   $scope.quote = {};
+
+  var userId = $rootScope.id;
 
   AddService.getShows().then(function (results) {
     $scope.shows = results;
@@ -23,7 +25,7 @@ angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$ionicPopup
     });
 
     alertPopup.then(function (res) {
-      $location.path('/tab/home');
+      $state.go("tab.home", { id: userId });
     });
   };
 
