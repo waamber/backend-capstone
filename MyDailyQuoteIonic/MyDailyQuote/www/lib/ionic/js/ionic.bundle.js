@@ -54718,14 +54718,14 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  * The following code would set the same config variable for all platforms:
  *
  * ```js
- * $ionicConfigProvider.views.maxCache(10);
+ * $ionicConfigProvider.views.maxCache(0);
  * ```
  *
  * Additionally, each platform can have its own config within the `$ionicConfigProvider.platform`
  * property. The config below would only apply to Android devices.
  *
  * ```js
- * $ionicConfigProvider.platform.android.views.maxCache(5);
+ * $ionicConfigProvider.platform.android.views.maxCache(0);
  * ```
  *
  * @usage
@@ -54733,7 +54733,7 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  * var myApp = angular.module('reallyCoolApp', ['ionic']);
  *
  * myApp.config(function($ionicConfigProvider) {
- *   $ionicConfigProvider.views.maxCache(5);
+ *   $ionicConfigProvider.views.maxCache(0);
  *
  *   // note that you can also chain configs
  *   $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');

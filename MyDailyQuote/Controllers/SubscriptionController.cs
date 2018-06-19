@@ -40,5 +40,14 @@ namespace MyDailyQuote.Controllers
 
 			return Request.CreateUpdatedRecordResponse(result);
 		}
+
+		[Route("subscribe/{userId}/{showId}"), HttpPost]
+		public HttpResponseMessage SubscribeToShow(int userId, int showId)
+		{
+			var repo = new UserShowRepo();
+			var result = repo.SubscribeToShow(userId, showId);
+
+			return Request.CreateAddRecordResponse(result);
+		}
 	}
 }

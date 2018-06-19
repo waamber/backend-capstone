@@ -11,7 +11,7 @@ angular.module('starter', ['ionic'])
     });
   }
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $stateProvider
       .state('login', {
         url: '/login',
@@ -24,7 +24,8 @@ angular.module('starter', ['ionic'])
         templateUrl: 'templates/tabs.html'
       })
       .state('tab.home', {
-        url: '/home/:id',
+        url: '/home',
+        cache: false,
         views: {
           'tab-home': {
             templateUrl: 'templates/tab-home.html',
@@ -34,6 +35,7 @@ angular.module('starter', ['ionic'])
       })
       .state('tab.add', {
         url: '/add',
+        cache: false,
         views: {
           'tab-add': {
             templateUrl: 'templates/tab-add.html',
@@ -42,7 +44,8 @@ angular.module('starter', ['ionic'])
         }
       })
       .state('tab.account', {
-        url: '/account/:id',
+        url: '/account',
+        cache: false,
         views: {
           'tab-account': {
             templateUrl: 'templates/tab-account.html',

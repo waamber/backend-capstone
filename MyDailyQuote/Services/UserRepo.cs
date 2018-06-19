@@ -31,7 +31,7 @@ namespace MyDailyQuote.Services
 			using (var db = GetConnection())
 			{
 				db.Open();
-				return db.QueryFirst<UserDto>(@"Select u.FirstName, u.LastName, u.Email, u.Phone
+				return db.QueryFirst<UserDto>(@"Select u.FirstName, u.LastName, u.Username, u.Phone
 									   From [dbo].[User] u
 									   Where u.UserId = @userId", new { userId });
 			}
@@ -59,6 +59,11 @@ namespace MyDailyQuote.Services
 									Where UserId = @UserId", user);
 			}
 		}
+
+		//public int CreateNewUser(User user)
+		//{
+
+		//}
 
 	}
 }

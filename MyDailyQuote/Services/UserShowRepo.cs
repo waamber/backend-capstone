@@ -40,5 +40,19 @@ namespace MyDailyQuote.Services
 									And ShowId = @showId", new { userId, showId });
 			}
 		}
+
+		public int SubscribeToShow(int userId, int showId)
+		{
+			using(var db = GetConnection())
+			{
+				db.Open();
+				return db.Execute(@"Insert into [dbo].[UserShow]
+									([ShowId],
+									 [UserId])
+								  Values
+									(@showId,
+									 @userId)", new { userId, showId });
+			}
+		}
 	}
 }
