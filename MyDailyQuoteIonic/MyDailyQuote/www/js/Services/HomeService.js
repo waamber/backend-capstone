@@ -35,4 +35,14 @@ angular.module('starter').service('HomeService',  function ($http, $q, $rootScop
     });
   };
 
+  this.subscribeToShow = function (userId, showId) {
+    return $q((resolve, reject) => {
+      $http.post(`http://localhost:50987/api/subscriptions/subscribe/${userId}/${showId}`).then(function (results) {
+        resolve(results);
+      }).catch(function (err) {
+        reject("Error in HomeService.", err);
+      });
+    });
+  };
+
 });

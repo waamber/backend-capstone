@@ -1,5 +1,20 @@
-<ion-view view-title="Account">
+<ion-view view-title="Account" ng-controller="AccountCtrl">
   <ion-content>
-    <h2>Account Test</h2>
+    <h2>Hello, {{user.FirstName}}!</h2>
+
+    <div class="list">
+
+
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="{{user.Phone}}">
+        </label>
+        <button class="button button-small">
+          Update
+        </button>
+      </div>
+
+    </div>
+
   </ion-content>
 </ion-view>

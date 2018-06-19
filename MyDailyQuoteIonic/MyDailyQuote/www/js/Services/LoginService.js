@@ -1,6 +1,6 @@
 angular.module('starter').service('LoginService', function ($http, $q, $rootScope) {
 
-  var getUser = function (password) {
+  this.getUser = function (password) {
     return $q((resolve, reject) => {
       $http.get(`http://localhost:50987/api/login/${password}`).then(function (results) {
         resolve(results);
@@ -10,6 +10,13 @@ angular.module('starter').service('LoginService', function ($http, $q, $rootScop
     });
   };
 
-  return { getUser };
+
+  //this.createNewUser = function (user) {
+  //  return $q((resolve, reject) => {
+  //    $http.post(``)
+  //  })
+  //}
+
+
 
 });
