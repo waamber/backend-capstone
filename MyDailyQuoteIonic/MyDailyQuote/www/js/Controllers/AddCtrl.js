@@ -27,6 +27,13 @@ angular.module('starter').controller('AddCtrl', ["$scope", "$http", "$ionicPopup
     });
   };
 
+  $scope.clearForm = function () {
+    $scope.resetForm = function () {
+      $scope.quote = angular.copy($scope.originForm); // Assign clear state to modified form 
+      $scope.quote.$setPristine(); // this line will update status of your form, but will not clean your data, where `registrForm` - name of form.
+    };
+  }
+
 
 }
 ]);

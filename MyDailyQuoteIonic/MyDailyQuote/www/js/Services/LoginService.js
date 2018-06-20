@@ -11,11 +11,15 @@ angular.module('starter').service('LoginService', function ($http, $q, $rootScop
   };
 
 
-  //this.createNewUser = function (user) {
-  //  return $q((resolve, reject) => {
-  //    $http.post(``)
-  //  })
-  //}
+  this.createNewUser = function (user) {
+    return $q((resolve, reject) => {
+      $http.post(`http://localhost:50987/api/user/create`, JSON.stringify(user)).then(function (results) {
+        resolve(results);
+      }).catch(function (err) {
+        reject("Error in createNewUser in LoginService", err);
+      });
+    });
+  };
 
 
 
