@@ -1,7 +1,7 @@
 <ion-view view-title="Submit A Quote" ng-controller="AddCtrl">
-  <ion-content class="padding-horizontal padding-top">
+  <ion-content class="padding-horizontal padding-top" id="addQuoteField">
 
-    <form id="quoteForm" name="quoteForm" ng-submit="submitNewQuote()" novalidate >
+    <form id="quoteForm" name="quoteForm" ng-submit="submitNewQuote()" novalidate>
       <div class="list">
         <label class="item item-input item-select">
           Show
@@ -19,12 +19,10 @@
         </label>
       </div>
     </form>
-    <button ng-click="addQuote()" class="button button-block button-positive" ng-disabled="quoteForm.$invalid">
-      Submit Quote
-    </button>
-    <button ng-click="clearForm()" class="button button-block button-assertive">
-      Clear
-    </button>
-
+    <div id="addQuoteBtn">
+      <button ng-click="addQuote()" class="button button-block button-positive" ng-disabled="quoteForm.$invalid">
+        Submit Quote
+      </button>
+    </div>
   </ion-content>
 </ion-view>

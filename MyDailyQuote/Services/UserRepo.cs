@@ -53,17 +53,31 @@ namespace MyDailyQuote.Services
 			using (var db = GetConnection())
 			{
 				db.Open();
-				return db.Execute(@"Update [dbo].[uSER]
-									Set [LastName] = @LastName,
-										[Phone] = @Phone
+				return db.Execute(@"Update [dbo].[User]
+									Set [Phone] = @Phone
 									Where UserId = @UserId", user);
 			}
 		}
 
-		//public int CreateNewUser(User user)
-		//{
-
-		//}
+		public int CreateNewUser(UserDto user)
+		{
+			using(var db = GetConnection())
+			{
+				db.Open();
+				return db.Execute(@"Insert into [dbo].[User]
+									([Username],
+									 [Password],
+									 [FirstName],
+									 [LastName],
+									 [Phone])
+									Values
+									 (@Username,
+									  @Password,
+									  @FirstName,
+									  @LastName,
+								      @Phone)", user);
+			}
+		}
 
 	}
 }

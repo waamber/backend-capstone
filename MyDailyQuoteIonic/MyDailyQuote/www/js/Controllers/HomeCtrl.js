@@ -2,17 +2,20 @@ angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$location"
 
   var userId = $rootScope.UserId;
 
-  HomeService.getShows().then(function (results) {
-    $scope.shows = results;
-  }).catch(function (err) {
-    console.log("Error in getShows().", err);
-  });
-
   HomeService.getSubscriptionsById(userId).then(function (results) {
     $scope.subscriptions = results;
   }).catch(function (err) {
     console.log("Error in getSubscriptionById,", err);
-  });
+  }).then(function () {
+    HomeService.getShows().then(function (results) {
+      var subscribedShows = $scope.subscriptions.map(function (sub) {return sub.ShowId})
+      $scope.shows = results.filter(function (show) { return subscribedShows.indexOf(show.ShowId) == -1 });
+    }).catch(function (err) {
+      console.log("Error in getShows().", err);
+    });
+  })
+
+
 
   $scope.unsubscribe = function (showId) {
     HomeService.unsubscribeToShow(userId, showId).then(function (results) {

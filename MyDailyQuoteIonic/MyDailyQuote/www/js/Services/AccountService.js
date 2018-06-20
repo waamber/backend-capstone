@@ -1,4 +1,4 @@
-angular.module('starter').service('AccountService', function ($http, $q, $rootScope) {
+angular.module('starter').service('AccountService', function ($http, $q) {
 
   this.getUserById = function (userId) {
     return $q((resolve, reject) => {
@@ -9,5 +9,15 @@ angular.module('starter').service('AccountService', function ($http, $q, $rootSc
       });
     });
   }
+
+  this.updateUser = function (user) {
+    return $q((resolve, reject) => {
+      $http.put(`http://localhost:50987/api/user/update/${user.UserId}`, user).then(function (results){
+        resolve(results);
+      }).catch(function (err) {
+        reject("Error in AccountService.", err);
+      });
+    });
+  };
 
 });
