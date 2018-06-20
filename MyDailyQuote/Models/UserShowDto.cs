@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MyDailyQuote.Models
+﻿namespace MyDailyQuote.Models
 {
 	public class UserShowDto
 	{

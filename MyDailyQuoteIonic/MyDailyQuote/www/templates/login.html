@@ -1,32 +1,31 @@
-<ion-view ng-controller="LoginCtrl">
-  <ion-content padding-vertical>
+<ion-view ng-controller="LoginCtrl" class="loginPage">
+  <ion-content class="padding">
 
-    <h5>Welcome to</h5>
-    <h2>My Daily Quote</h2>
-    <form name="loginForm">
-      <div class="list">
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Username</span>
-          <input type="text" placeholder="Username" ng-model="user.username">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Password</span>
-          <input type="password" placeholder="Password" ng-model="user.password">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">First Name</span>
-          <input type="text" placeholder="First Name" ng-model="user.firstName">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Last Name</span>
-          <input type="text" placeholder="Last Name" ng-model="user.lastName">
-        </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Phone</span>
-          <input type="text" placeholder="Ex: 5746478375" ng-model="user.phone">
-        </label>
-      </div>
-    </form>
+    <div class="text-center"><img id="logoImg" src="../img/logo.png" /></div>
+
+    <div class="list" id="loginInput">
+      <label class="item item-input">
+        <span class="item-label">Username</span>
+        <input type="text" ng-model="user.username">
+      </label>
+      <label class="item item-input">
+        <span class="item-label">Password</span>
+        <input type="password" ng-model="user.password">
+      </label>
+      <label class="item item-input">
+        <span class="item-label">First Name</span>
+        <input type="text" ng-model="user.firstName">
+      </label>
+      <label class="item item-input">
+        <span class="item-label">Last Name</span>
+        <input type="text" ng-model="user.lastName">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Phone</span>
+        <input type="text" placeholder="Ex: 5746478375" ng-model="user.phone">
+      </label>
+    </div>
+
     <div padding>
       <button class="button button-block button-positive" ng-click="login()">Login</button>
       <button class="button button-block button-engerized" ng-click="signUpUser()">Sign Up</button>

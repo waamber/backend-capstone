@@ -1,4 +1,4 @@
-angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$location", "$rootScope", "HomeService", "$state", function ($scope, $http, $location, $rootScope, HomeService, $state) {
+angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$rootScope", "HomeService", "$state", function ($scope, $http, $rootScope, HomeService, $state) {
 
   var userId = $rootScope.UserId;
 
@@ -14,8 +14,6 @@ angular.module('starter').controller('HomeCtrl', ["$scope", "$http", "$location"
       console.log("Error in getShows().", err);
     });
   })
-
-
 
   $scope.unsubscribe = function (showId) {
     HomeService.unsubscribeToShow(userId, showId).then(function (results) {

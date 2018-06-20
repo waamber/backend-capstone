@@ -1,4 +1,17 @@
-/* Empty. Add your own CSS if you like */
+/*********Login***********/
+
+.loginPage {
+  background-color: #EFE9F4;
+}
+
+#loginInput {
+  border-radius: 15px;
+}
+
+#logoImg {
+  max-height: 300px;
+  max-width: 300px;
+}
 
 
 /*********Add Quote Tab***********/
