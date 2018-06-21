@@ -1,6 +1,5 @@
 ﻿using MyDailyQuote.Services;
 using System.Net.Http;
-using System.Web;
 using System.Web.Http;
 
 namespace MyDailyQuote.Controllers
@@ -18,6 +17,5 @@ namespace MyDailyQuote.Controllers
 			return Request.CreateResponse(result);
 		}
 	}
-		
-	
+
 }

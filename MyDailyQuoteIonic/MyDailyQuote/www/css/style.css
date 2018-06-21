@@ -1,9 +1,46 @@
-/* Empty. Add your own CSS if you like */
+/*********Login***********/
 
+.loginPage {
+  background-color: #EFE9F4;
+}
+
+#loginInput {
+  border-radius: 15px;
+}
+
+#logoImg {
+  max-height: 300px;
+  max-width: 300px;
+}
+
+/*********Home Tab***********/
+
+.homePage {
+  background-color: #EFE9F4;
+}
+
+.item-divider {
+  font-family: 'Assistant', sans-serif;
+  font-weight: bold;
+}
+
+.show-items {
+  font-family: 'Assistant', sans-serif;
+}
 
 /*********Add Quote Tab***********/
+
+.addTab {
+  background-color: #EFE9F4;
+}
+
+
 #addQuoteField {
-  padding-top: 85px;
+  padding-top: 150px;
+}
+
+#quoteForm {
+  font-family: 'Assistant', sans-serif;
 }
 
 #addQuoteBtn {
@@ -11,9 +48,19 @@
 }
 
 /*********Profile Tab***********/
-#profileAvi {
-  max-height: 150px;
-  border-radius: 50%;
+
+.accountTab {
+  background-color: #EFE9F4;
+  font-family: 'Assistant', sans-serif;
 }
 
+#profileAvi {
+  max-height: 200px;
+  border-radius: 50%;
+  padding-top: 25px;
+}
+
+.updateInput {
+  padding-top: 50px;
+}
 

@@ -1,4 +1,4 @@
-<ion-view view-title="Account" ng-controller="AccountCtrl" {{user.FirstName}} {{user.LastName}}>
+<ion-view view-title="Profile" ng-controller="AccountCtrl" class="accountTab">
   <ion-content class="padding">
     <div class="text-center"><h2>Hello, {{user.Username}}!</h2></div>
 
@@ -6,18 +6,18 @@
 
     <div class="text-center"><h4>{{user.FirstName}} {{user.LastName}}</h4></div>
 
-    <div class="list padding-top">
+    <div class="list padding-top updateInput">
       <div class="item item-input-inset">
         <label class="item-input-wrapper">
           <input type="text" placeholder="{{user.Phone}}" ng-model="user.Phone">
         </label>
-        <button class="button button-small" ng-click="updateUser(user)">
+        <button class="button button-small updateBtn button-energized" ng-click="updateUser(user)">
           Update
         </button>
       </div>
     </div>
     <div>
-    <button id="logoutBtn" class="button button-block button-assertive" ng-click="logout()">Logout</button>
-
+      <button id="logoutBtn" class="button button-block button-assertive" ng-click="logout()">Logout</button>
+    </div>
   </ion-content>
 </ion-view>

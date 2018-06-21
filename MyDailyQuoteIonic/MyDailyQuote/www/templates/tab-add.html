@@ -1,4 +1,4 @@
-<ion-view view-title="Submit A Quote" ng-controller="AddCtrl">
+<ion-view view-title="Submit A Quote" ng-controller="AddCtrl" class="addTab">
   <ion-content class="padding-horizontal padding-top" id="addQuoteField">
 
     <form id="quoteForm" name="quoteForm" ng-submit="submitNewQuote()" novalidate>
@@ -9,12 +9,10 @@
             <option value="" ng-selected="true">Select</option>
           </select>
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Quote</span>
+        <label class="item item-input">
           <input required type="text" placeholder="Quote" ng-model="quote.QuoteBody">
         </label>
-        <label class="item item-input item-floating-label">
-          <span class="input-label">Author</span>
+        <label class="item item-input">
           <input required type="text" placeholder="Author" ng-model="quote.Author">
         </label>
       </div>
