@@ -1,10 +1,10 @@
-<ion-view view-title="Home" ng-controller="HomeCtrl">
+<ion-view view-title="Subscriptions" ng-controller="HomeCtrl" class="homePage">
   <ion-content>
     <div class="showsList">
       <div class="item item-divider">
         My Subscriptions
       </div>
-      <div class="mySubscriptionsList item item-button-right"  ng-repeat="subscription in subscriptions">
+      <div class="mySubscriptionsList item item-button-right show-items"  ng-repeat="subscription in subscriptions">
         {{subscription.Title}}
         <button class="button button-assertive" ng-click="unsubscribe(subscription.ShowId)">
           <i class="icon ion-ios-close"></i>
@@ -13,9 +13,9 @@
       <div class="item item-divider">
       Browse
     </div>
-      <div class="showsList item item-button-right" ng-repeat="show in shows">
+      <div class="showsList item item-button-right show-items" ng-repeat="show in shows">
         {{show.Title}}
-        <button class="button button-balanced" ng-click="subscribe(show.ShowId)">
+        <button class="button button-royal" ng-click="subscribe(show.ShowId)">
           <i class="icon ion-ios-plus"></i>
         </button>
       </div>
