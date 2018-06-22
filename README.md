@@ -12,6 +12,7 @@
 
 #### - C#/.NET Web API
 #### - AngularJS
+#### - Apache Cordova
 #### - Ionic v1 Framework
 #### - Twilio SMS 
 #### - Hangfire
